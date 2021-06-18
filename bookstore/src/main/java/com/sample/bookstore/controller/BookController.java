@@ -17,7 +17,7 @@ import com.sample.bookstore.service.BookService;
 @RestController
 public class BookController {
 
-	@Autowired
+	@Autowired 
 	BookService bookService;
 	
 	@GetMapping("/book/author/{authorName}")
