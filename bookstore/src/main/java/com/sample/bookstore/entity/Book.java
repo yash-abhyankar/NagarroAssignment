@@ -10,11 +10,11 @@ import javax.validation.constraints.NotNull;
 @Table(name = "BOOK")
 public class Book {
 
-	@Id
+	@Id 
 	@NotNull(message = "Please provide a isbn") 
 	private Integer isbn;  
 	
-	@NotEmpty(message = "Please provide a title") 
+	@NotEmpty(message = "Please provide a  title") 
 	private String title;
 	
 	@NotEmpty(message = "Please provide a author") 
