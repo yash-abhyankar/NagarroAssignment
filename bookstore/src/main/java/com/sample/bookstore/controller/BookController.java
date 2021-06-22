@@ -36,6 +36,7 @@ public class BookController {
 	}
 	
 	@GetMapping("/book/isbn/{isbn}")
+	
 	private Book getbookbyisbn(@PathVariable("isbn") int isbn) {
 		 
 		Book b=	bookService.findbookbyisbn(isbn);
@@ -46,7 +47,9 @@ public class BookController {
 	//Add Book in bookstore
 	
 	@PostMapping("/addBook")
-	private String addbook(@Valid @RequestBody Book book) {
+	@TrackExecutionTime
+	public String addbook(@RequestBody Book book) {
+		  System.out.println("adding book controller"+book);
 		bookService.addBook(book);
 		return book.getTitle()+"added successfully";
 	}

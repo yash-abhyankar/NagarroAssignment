@@ -46,6 +46,7 @@ public class BookService {
 
 	public void addBook(Book book) {
 		// TODO Auto-generated method stub
+		  System.out.println("adding book"+book);
 		bookDao.save(book);
 	}
 

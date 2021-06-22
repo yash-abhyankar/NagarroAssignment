@@ -11,16 +11,16 @@ import javax.validation.constraints.NotNull;
 public class Book {
 
 	@Id 
-	@NotNull(message = "Please provide a isbn") 
+	//@NotNull(message = "Please provide a isbn") 
 	private Integer isbn;  
 	
-	@NotEmpty(message = "Please provide a  title") 
+	//@NotEmpty(message = "Please provide a  title") 
 	private String title;
 	
-	@NotEmpty(message = "Please provide a author") 
+//	@NotEmpty(message = "Please provide a author") 
 	private String author;
 	
-	@NotNull(message = "Please provide a price") 
+	//@NotNull(message = "Please provide a price") 
 	private Integer price;
 	
 	public int getIsbn() {
