@@ -32,6 +32,19 @@ public class Book {
 	public String getTitle() {
 		return title;
 	}
+	
+	
+	
+	public Book() {
+		super();
+	}
+	public Book(Integer isbn, String title, String author, Integer price) {
+		super();
+		this.isbn = isbn;
+		this.title = title;
+		this.author = author;
+		this.price = price;
+	}
 	public void setTitle(String title) {
 		this.title = title;
 	}

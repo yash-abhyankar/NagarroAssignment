@@ -20,6 +20,21 @@ public class BookController {
 	@Autowired 
 	BookService bookService;
 	
+	@GetMapping("/test/{test}")
+	private String gettest(@PathVariable("test") String test) {
+		 
+		System.out.println("Junit"+test);
+		return test;
+	}
+	
+	@GetMapping("/")
+	private String getsampletest() {
+		 
+		System.out.println("Junit");
+		return "junit";
+	}
+	
+	
 	@GetMapping("/book/author/{authorName}")
 	private List<Book> getbookbyauthor(@PathVariable("authorName") String authorName) {
 		 
