@@ -21,14 +21,14 @@ public class BookController {
 	BookService bookService;
 	
 	@GetMapping("/test/{test}")
-	private String gettest(@PathVariable("test") String test) {
+	public String gettest(@PathVariable("test") String test) {
 		 
 		System.out.println("Junit"+test);
 		return test;
 	}
 	
 	@GetMapping("/")
-	private String getsampletest() {
+	public String getsampletest() {
 		 
 		System.out.println("Junit");
 		return "junit";
@@ -36,7 +36,8 @@ public class BookController {
 	
 	
 	@GetMapping("/book/author/{authorName}")
-	private List<Book> getbookbyauthor(@PathVariable("authorName") String authorName) {
+	@TrackExecutionTime
+	public List<Book> getbookbyauthor(@PathVariable("authorName") String authorName) {
 		 
 	List<Book> books=	bookService.findbookbyauthor(authorName);
 		return books;
@@ -44,15 +45,16 @@ public class BookController {
 
 	
 	@GetMapping("/book/title/{titleName}")
-	private Book getbookbytitle(@PathVariable("titleName") String titleName) {
+	@TrackExecutionTime
+	public Book getbookbytitle(@PathVariable("titleName") String titleName) {
 		 
 		Book b=	bookService.findbookbytitle(titleName);
 		return b;
 	}
 	
 	@GetMapping("/book/isbn/{isbn}")
-	
-	private Book getbookbyisbn(@PathVariable("isbn") int isbn) {
+	@TrackExecutionTime
+	public Book getbookbyisbn(@PathVariable("isbn") int isbn) {
 		 
 		Book b=	bookService.findbookbyisbn(isbn);
 		return b;
@@ -74,11 +76,25 @@ public class BookController {
 
 	
 	@GetMapping("/getCoverage/{title}")
-	private List<String> getmediaCoverage( @PathVariable("title") String title) {
+	@TrackExecutionTime
+	public List<String> getmediaCoverage( @PathVariable("title") String title) {
 		
 		return bookService.getmediaCoverage(title);
 		
 		
 	}
+	
+	
+	@PostMapping("/buyBook/customerId/{cusId}/bookIsbn/{isbn}")
+	@TrackExecutionTime
+	public String buyBook(@PathVariable("cusId") Integer cusId, @PathVariable("isbn")  Integer isbn) {
+		
+		
+		 bookService.buyBook(cusId, isbn);
+		 
+		 return "Book Buy success";
+		
+	}
+	
 	
 }

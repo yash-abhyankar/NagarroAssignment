@@ -3,6 +3,7 @@ package com.sample.bookstore.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -16,8 +17,10 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sample.bookstore.entity.Book;
+import com.sample.bookstore.entity.Customer;
 import com.sample.bookstore.entity.MediaCoverage;
 import com.sample.bookstore.repository.BookDAO;
+import com.sample.bookstore.repository.CustomerDAO;
 
 @Transactional
 @Service
@@ -28,6 +31,10 @@ public class BookService {
 	
 	@Autowired
 	BookDAO bookDao;
+	
+	@Autowired
+	CustomerDAO customerDao;
+	
 	
 	public List<Book> findbookbyauthor(String authorName) {
 		// TODO Auto-generated method stub
@@ -74,6 +81,18 @@ public class BookService {
 		    
 		    return titleList;
 }
+
+	public void buyBook(Integer cusId, Integer isbn) {
+		
+	Book b=	bookDao.findByIsbn(isbn);
+    Customer c = customerDao.findByCustomerId(cusId);
+	
+	b.setCustomer(c);	
+	
+	bookDao.save(b);
+	
+		
+	}
 
 	
 	

@@ -1,7 +1,10 @@
 package com.sample.bookstore.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -23,6 +26,19 @@ public class Book {
 	//@NotNull(message = "Please provide a price") 
 	private Integer price;
 	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
+
+	
+	 public Customer getCustomer() {
+			return customer;
+		}
+		public void setCustomer(Customer customer) {
+			this.customer = customer;
+		}
+		
 	public int getIsbn() {
 		return isbn;
 	}
